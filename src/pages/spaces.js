@@ -1,10 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import snippets from './snippets'
-class spaces extends React.Component {
-    constructor() {
-        super();
-    }
+class spaces extends React.Component { 
     render() {
         return (
             <div>

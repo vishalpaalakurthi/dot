@@ -1,8 +1,5 @@
 import React from 'react' 
-class Snippet extends React.Component{
-    constructor(){
-        super();
-    }
+class Snippet extends React.Component{ 
     render(){
         return(
             <div>

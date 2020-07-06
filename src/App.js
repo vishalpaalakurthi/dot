@@ -1,17 +1,29 @@
-import React from "react"; 
-import { Provider } from "react-redux"; 
+import React from "react";
+import { Provider } from "react-redux";
 import { createBrowserHistory } from "history";
 
-import AppRouter from "./AppRouter.js";
-import configureStore from "./store";
-   
-  const history = createBrowserHistory();
-  const store = configureStore();
- 
+import AppRouter from "./AppRouter.js"; 
+
+import reducer from './reducers'
+import { createStore } from "redux";
+
+const initialState = {
+    user:{
+        theme:'dark',
+        onboard:true,
+    }
+}
+const history = createBrowserHistory();
+const store = createStore(
+    reducer,
+    initialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+
 const App = () => (
-  <Provider store={store}>
-    <AppRouter history={history} />
-  </Provider>
+    <Provider store={store}>
+        <AppRouter history={history} />
+    </Provider>
 );
 
 export default App;

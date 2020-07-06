@@ -17,7 +17,7 @@ export default ({ workspaces ,user}) => {
                 <Item
                     key={`item-${index}`}
                     index={index}
-                    to={"/w/" + workspace.id}
+                    to={"/" + workspace.id}
                     style={{textTransform:'uppercase'}}
                 >{workspace.title.slice(0, 2)}</Item>
             ))}

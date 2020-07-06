@@ -9,8 +9,7 @@ import AuthedRoute from "./AuthedRoute";
 import UnauthedRoute from "./UnauthedRoute";
 import Login from './pages/Login'
 import NotFound from './pages/404'
-import Home from './pages'
-import workspaces from './pages/workspaces' 
+import Home from './pages' 
 import { ThemeWrapper } from "./services/theme"; 
 import { getAllData } from "./api";
 
@@ -26,8 +25,7 @@ class AppRouter extends Component {
             <Router history={this.props.history}>
                 <ThemeWrapper user={this.props.user}> 
                         <Switch>
-                            <AuthedRoute component={workspaces} exact path={["/:wid","/:wid/:sid","/:wid/:sid/:cid"]} />
-                            <AuthedRoute component={Home} exact path="/" />
+                            <AuthedRoute component={Home} exact path={["/","/:wid","/:wid/:sid","/:wid/:sid/:cid"]} />
                             <AuthedRoute component={Home} exact path="/create" />
                             <UnauthedRoute component={Login} exact path="/login" />  
                             <Route component={NotFound} />
