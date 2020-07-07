@@ -25,9 +25,9 @@ class AppRouter extends Component {
             <Router history={this.props.history}>
                 <ThemeWrapper user={this.props.user}> 
                         <Switch>
-                            <AuthedRoute component={Home} exact path={["/","/:wid","/:wid/:sid","/:wid/:sid/:cid"]} />
-                            <AuthedRoute component={Home} exact path="/create" />
                             <UnauthedRoute component={Login} exact path="/login" />  
+                            <AuthedRoute component={Home} exact path="/create" />
+                            <AuthedRoute component={Home} exact path={["/","/:wid","/:wid/:sid","/:wid/:sid/:cid"]} />
                             <Route component={NotFound} />
                         </Switch> 
                 </ThemeWrapper>

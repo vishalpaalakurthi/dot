@@ -4,7 +4,7 @@ import {updateUser} from './../api'
 export class onboard extends Component { 
     componentDidMount(){
         if(!this.props.user.onboard){
-            this.props.history.push('/w')
+            this.props.history.push('/')
         }
     }
     done = ()=>{ 
@@ -14,7 +14,7 @@ export class onboard extends Component {
     }
     render() {
         if(!this.props.user.onboard){
-            this.props.history.push('/w')
+            this.props.history.push('/')
         }
         return (
             <div>

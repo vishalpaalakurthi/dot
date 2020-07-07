@@ -21,6 +21,11 @@ class Home extends React.Component {
     }
     componentDidMount(){  
     }
+    onSortEnd =(w)=>{
+        let{user} = this.props;
+        user.workspaces = w;
+        this.props.dispatch({type:'UPDATE_USER',user:user})
+    }
     render() {
         return (
             <Wrapper>

@@ -2,10 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Icon from 'react-icons-kit'
+
 import { grid, helpCircle, plus } from 'react-icons-kit/feather'
 import { Link } from 'react-router-dom';
+import { ReactSortable } from 'react-sortablejs';
 
-export default ({ workspaces ,user}) => { 
+export default ({ workspaces ,user,onSortEnd}) => { 
     return (
     <Wrapper>
         <Link to="/" className="options" >
@@ -13,7 +15,8 @@ export default ({ workspaces ,user}) => {
         </Link>
 
         <Items>
-            {workspaces && workspaces.map((workspace, index) => (
+            <ReactSortable list={workspaces} setList={onSortEnd}>
+                {workspaces && workspaces.map((workspace, index) => (
                 <Item
                     key={`item-${index}`}
                     index={index}
@@ -21,6 +24,7 @@ export default ({ workspaces ,user}) => {
                     style={{textTransform:'uppercase'}}
                 >{workspace.title.slice(0, 2)}</Item>
             ))}
+            </ReactSortable> 
             <Item to="/create"><Icon icon={plus} /></Item>
         </Items> 
         <Item to="/"><img src={user.photoURL} height="32px" width="32px" style={{borderRadius:'25px'}} alt="U"/></Item>
