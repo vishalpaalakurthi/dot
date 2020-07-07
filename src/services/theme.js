@@ -9,6 +9,12 @@ export const theme = {
     blaze: {
         background: '#121212',
         color: '#efefef'
+    },
+    monokai:{
+
+    },
+    drakula:{
+        
     }
 }
 
@@ -48,10 +54,10 @@ ${reset}
         -webkit-font-smoothing: auto;
     }
     
-    a,a:active{
+    a{
         color:inherit;
         text-decoration:none;
-    }
+    }  
     /* Small (sm) */
     @media (min-width: 640px) { /* ... */ }
 

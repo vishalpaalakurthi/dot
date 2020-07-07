@@ -12,6 +12,8 @@ import NotFound from './pages/404'
 import Home from './pages' 
 import { ThemeWrapper } from "./services/theme"; 
 import { getAllData } from "./api";
+import  onboard   from "./pages/onboard";
+import  create   from "./pages/create";
 
 nprogress.start();
 class AppRouter extends Component {
@@ -20,13 +22,17 @@ class AppRouter extends Component {
         getAllData(dispatch)
         nprogress.done();
     }
+    componentWillUnmount() { 
+        nprogress.done();
+    }
     render() {
         return (
             <Router history={this.props.history}>
                 <ThemeWrapper user={this.props.user}> 
                         <Switch>
                             <UnauthedRoute component={Login} exact path="/login" />  
-                            <AuthedRoute component={Home} exact path="/create" />
+                            <AuthedRoute component={create} exact path="/create" />
+                            <AuthedRoute component={onboard} exact path="/onboarding" />
                             <AuthedRoute component={Home} exact path={["/","/:wid","/:wid/:sid","/:wid/:sid/:cid"]} />
                             <Route component={NotFound} />
                         </Switch> 
@@ -41,7 +47,7 @@ AppRouter.propTypes = {
     history: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state =>{ 
+const mapStateToProps = state =>{  
     return ({ user: state.user })}
 
 export default connect(mapStateToProps)(AppRouter);

@@ -1,11 +1,11 @@
 import fire from './firebase'
-export const getUser = (dispatch, userID) => {
+export const getUser = (dispatch, userID) => { 
     fire.getUserInfo(userID).then(u => {
         dispatch({ type: 'UPDATE_USER', user: u }) 
     }).catch(e => {
     })
 }
-export const updateUser = (dispatch, user) => {
+export const updateUser = (dispatch, user) => { 
     fire.updateUserInfo(user).then((u) => { 
         dispatch({ type: 'UPDATE_USER', user: u })
     })

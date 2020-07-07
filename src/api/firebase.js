@@ -22,12 +22,12 @@ class Firebase {
                 let { user } = result
                 this.db.ref('/users/' + user.uid).once('value').then(snap => {
                     if (snap.val()) {
-                        this.getUserInfo(user.uid).then(u => {
+                        return this.getUserInfo(user.uid).then(u => {
                             localStorage.setItem('authedUser', u.uid)
                             return resolve(u)
                         })
                     }
-                    this.createuser(user.uid,result).then(u => {
+                  return this.createuser(user.uid,result).then(u => {
                         localStorage.setItem('authedUser', u.uid)                        
                         return resolve(u);
                     })
@@ -53,14 +53,14 @@ class Firebase {
                 theme: 'blaze',
                 accessToken: result.credential.accessToken,
                 lastPath: '/',
-                workspaces: [
-                    {
-                        id: uid,
-                        title: `${user.displayName} -workspace` || `untitled-workspace'`,
+                selectedWorkspaces: uid,
+                workspaces: {
+                   [uid] : { 
+                        title: `${user.displayName}-workspace` || `untitled-workspace'`,
                         members: [{ uid: user.uid, access: 'OWNER' }],
                         private: true
                     }
-                ]
+                }
             }
             this.db.ref('users/' + uid).set(this.user);
             this.store.collection('/workspaces/').doc(uid).set({

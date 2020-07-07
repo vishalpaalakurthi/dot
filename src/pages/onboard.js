@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {updateUser} from './../api'
 export class onboard extends Component { 
-    componentDidMount(){
+    componentDidMount(){ 
         if(!this.props.user.onboard){
             this.props.history.push('/')
         }
     }
-    done = ()=>{ 
+    done = ()=>{  
          let {user} = this.props
             user.onboard = false;  
          updateUser(this.props.dispatch,user)
     }
-    render() {
+    render() {  
         if(!this.props.user.onboard){
             this.props.history.push('/')
         }
@@ -29,9 +29,9 @@ export class onboard extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) =>({
     user:state.user
-})
+}) 
  
 
 export default connect(mapStateToProps)(onboard)

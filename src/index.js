@@ -11,14 +11,7 @@ import * as serviceWorker from './serviceWorker';
 // Raven.config(config.sentry, {
 // 	release: config.version,
 // }).install();
-
-// window.streamClient = stream.connect(config.stream.apiKey, null, config.stream.appID);
-
-// window.streamAnalyticsClient = new StreamAnalytics({
-// 	apiKey: config.stream.apiKey,
-// 	token: config.stream.analyticsKey,
-// });
-
+ 
 // Raven.context(() => {
 ReactDOM.render(<App />, document.getElementById("root"));
 // });

@@ -8,6 +8,11 @@ import spaces from './spaces'
 class Workspaces extends React.Component {
  
     componentDidMount(){  
+       /*
+            1) show list of spaces 
+            2) select first space data into redux or from /:sid
+            3) switch space data into redux
+       */
     }
     render() {
         return (

@@ -20,6 +20,15 @@ class Home extends React.Component {
         } 
     }
     componentDidMount(){  
+        /*
+            1) fetch data of workspace into redux
+            2) redirect to first selected workspace from redux we will load data 
+            3) list of workspaces - user data 
+            4) selected workspace/user settings - user data 
+            5) global shortcuts - 
+            6) notifications
+            7) help docs / keyboard shortcust list 
+        */ 
     }
     onSortEnd =(w)=>{
         let{user} = this.props;
@@ -35,6 +44,7 @@ class Home extends React.Component {
                         <Icon icon={chevronLeft} style={{ padding: 10 }} onClick={this.props.history.goBack} />
                         <Icon icon={chevronRight} style={{ padding: 10 }} onClick={this.props.history.goForward} />
                         <div style={{ flex: 1 }} />
+                        {/* {search} */}
                         <Icon icon={bell} style={{ padding: 10 }} onClick={()=>{this.setState({showCreateModal:!this.state.showCreateModal})}} />
                     </div>
                     <Switch>
