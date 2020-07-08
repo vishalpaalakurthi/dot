@@ -57,19 +57,8 @@ class Home extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownprops) => {   
-    if (ownprops.match.params.wid && state.user.workspaces) {
-        const ws = state.user.workspaces.filter(({ id }) => id === ownprops.match.params.wid)
-        return {
-            ...ownprops,
-            user: state.user,
-            workspace: ws[0],
-            workspaces:state.user.workspaces
-        };
-    }
-    else { 
-        return { ...ownprops, user: state.user ,workspaces:state.user.workspaces}
-    }
+const mapStateToProps = (state ) => {    
+        return {  user: state.user ,workspaces:state.workspaces} 
 }
 
 const Wrapper = styled.div`

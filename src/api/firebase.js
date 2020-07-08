@@ -105,11 +105,21 @@ class Firebase {
     }
 
     getWorkspaces = ()=>{
-        return new Promise((resolve,reject)=>{ 
+        return new Promise((resolve,reject)=>{  
             resolve(this.user.workspaces)
         })
     }
 
+    getSpaces = ()=>{
+        return new Promise((resolve,reject)=>{
+            return resolve([])
+        })
+    }
+
+    getSnippets = ()=> {
+        return new Promise((resolve,reject)=>{
+            return resolve([])
+        })}
 }
 
 export default new Firebase();
