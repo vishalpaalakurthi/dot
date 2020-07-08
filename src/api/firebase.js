@@ -15,7 +15,7 @@ class Firebase {
         }
     }
 
-    login() {
+    login = ()=> {
         return new Promise((resolve, reject) => {
             var provider = new app.auth.GithubAuthProvider();
             this.auth.signInWithPopup(provider).then((result) => {
@@ -38,7 +38,8 @@ class Firebase {
             });
         });
     }
-    createuser(uid,result ) {
+    
+    createuser = (uid,result )=>{
         return new Promise((resolve, reject) => { 
             const user = this.auth.currentUser
             this.user = {
@@ -56,7 +57,8 @@ class Firebase {
                 selectedWorkspaces: uid,
                 workspaces: {
                    [uid] : { 
-                        title: `${user.displayName}-workspace` || `untitled-workspace'`,
+                        id:uid,
+                        title: user.displayName ? `${user.displayName}-workspace` : `untitled-workspace'`,
                         members: [{ uid: user.uid, access: 'OWNER' }],
                         private: true
                     }
@@ -76,7 +78,8 @@ class Firebase {
             resolve(this.user)
         })
     }
-    getUserInfo(uid) {
+    
+    getUserInfo = (uid)=> {
         return new Promise(async (resolve, reject) => {
             app.database().ref('users/' + uid).once('value').then(snapshot => {
                 this.user = snapshot.val();
@@ -84,7 +87,8 @@ class Firebase {
             })
         })
     }
-    updateUserInfo(user) {
+    
+    updateUserInfo = (user)=> {
         return new Promise((resolve, reject) => { 
             this.db.ref('/users/' + user.uid).update(user).then(() => {
                 this.user = user
@@ -94,12 +98,13 @@ class Firebase {
             })
         })
     }
-    signOut() {
+
+    signOut = ()=> {
         localStorage.clear();
         return this.auth.signOut();
     }
 
-    getWorkspaces(){
+    getWorkspaces = ()=>{
         return new Promise((resolve,reject)=>{ 
             resolve(this.user.workspaces)
         })
