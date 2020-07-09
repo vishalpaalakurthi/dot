@@ -28,13 +28,14 @@ class Workspaces extends React.Component {
 }
 
 const mapStateToProps = (state, ownprops) => { 
-    // debugger;
+    debugger;
     if (ownprops.match.params.wid && state.user.workspaces) {
         const ws = state.user.workspaces.filter(({ id }) => id === ownprops.match.params.wid)
         return {
             ...ownprops,
             user: state.user,
             workspace: ws[0],
+            spaces:state.spaces
         };
     }
     else { 
