@@ -2,15 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
  
-import Sidebar from '../components/sidebar'
 import styled from 'styled-components';
 import Icon from 'react-icons-kit'
 import { chevronLeft, chevronRight } from 'react-icons-kit/feather';
 import { bell } from 'react-icons-kit/feather';  
+
 import Create from '../components/workspace/Create';
 import workspaces from './workspace';
+import Sidebar from '../components/sidebar'
 
-// list of worspaces and global search on the Top
 class Home extends React.Component {
     constructor() {
         super();
@@ -28,10 +28,11 @@ class Home extends React.Component {
             5) global shortcuts - 
             6) notifications
             7) help docs / keyboard shortcust list 
-        */ 
+        */  
+       this.props.history.push(`/${this.props.user.selectedWorkspace}`);
     }
     onSortEnd =(w)=>{
-        let{user} = this.props;
+    let{user} = this.props;
         user.workspaces = w;
         this.props.dispatch({type:'UPDATE_USER',user:user})
     }
