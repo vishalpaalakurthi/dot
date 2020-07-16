@@ -25,3 +25,12 @@ export const getAllData = (dispatch) => {
         getWorkspaces(dispatch) 
     }
 }
+
+export const createWorkspace = async (dispatch, wsDef, user) => {
+    return await fire.createWorkspace(wsDef, user)
+    .then((ws) => {
+        fire.updateUserInfo(user);
+        dispatch({ type: 'UPDATE_USER', user: user })
+        dispatch({ type: 'UPDATE_WORKSPACES', workspaces: user.workspaces })
+    })
+}

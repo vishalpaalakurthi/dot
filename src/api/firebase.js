@@ -105,6 +105,26 @@ class Firebase {
         })
     }
 
+    createWorkspace(wsDef, user) {
+        return new Promise((resolve, reject) => {
+            this.store.collection("/workspaces/").add({
+                title: wsDef.title,
+                createdOn: new Date(),
+                lastUpdatedOn: new Date(),
+                members: wsDef.members,
+                private: true
+            }).then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                wsDef.id = docRef.id;
+                user.workspaces.push(wsDef);
+                resolve(wsDef);
+            }).catch(function (error) {
+                console.error("Error adding document: ", error);
+                resolve(wsDef);
+            });
+        })
+    }
+
 }
 
 export default new Firebase();
